@@ -1,0 +1,23 @@
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+<entity name="Travis\StreamingBackend\Domains\Entities\Role\Role" table="roles">
+        <id name="id" column="id" type="integer">
+            <generator />
+        </id>
+        <field name="name" column="name" type="string" />
+        <many-to-many field="users" mapped-by="roles" target-entity="Travis\StreamingBackend\Domains\Entities\User\User"/>
+        <many-to-many field="permissions" inversed-by="roles" target-entity="Travis\StreamingBackend\Domains\Entities\Permission\Permission">
+             <join-table name="role_has_permissions">
+            <join-columns>
+                <join-column name="role_id" referenced-column-name="id" />
+            </join-columns>
+            <inverse-join-columns>
+                <join-column name="permission_id" referenced-column-name="id" />
+            </inverse-join-columns>
+        </join-table>
+        </many-to-many>
+
+</entity>
+</doctrine-mapping>

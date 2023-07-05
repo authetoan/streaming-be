@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+// bin/doctrine
+require __DIR__ . "/../vendor/autoload.php";
+
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
+use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
+
+// Adjust this path to your actual bootstrap.php
+$app = require __DIR__ . "/../bootstrap/app.php";
+
+$entityManager = $app()->getContainer()->get(EntityManager::class);
+ConsoleRunner::run(
+    new SingleManagerProvider($entityManager)
+);

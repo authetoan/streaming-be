@@ -1,0 +1,18 @@
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+<entity name="Travis\StreamingBackend\Domains\Entities\Permission\Permission" table="permissions">
+    <id name="id" column="id" type="integer">
+        <generator />
+    </id>
+    <field name="name" column="name" type="string" />
+    <many-to-many field="users" mapped-by="permissions" target-entity="Travis\StreamingBackend\Domains\Entities\User\User"/>
+    <many-to-many field="roles" mapped-by="permissions" target-entity="Travis\StreamingBackend\Domains\Entities\Role\Role"/>
+    <many-to-many field="clients" mapped-by="permissions" target-entity="Travis\StreamingBackend\Domains\Entities\Client\Client"/>
+
+    <unique-constraints>
+        <unique-constraint columns="name" name="UNIQ_2DEDCC6F5E237E06"/>
+    </unique-constraints>
+</entity>
+</doctrine-mapping>
