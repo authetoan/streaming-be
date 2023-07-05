@@ -1,0 +1,41 @@
+version: '3'
+services:
+
+  #PHP App
+  app:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    container_name: streaming_app
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www/html
+    volumes:
+      - ./code/:/var/www/html
+
+  #Nginx Service
+  nginx:
+    image: nginx:latest
+    container_name: streaming_nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - '8080:80'
+    volumes:
+      - ./code/:/var/www/html
+      - ./config/nginx/conf.d/:/etc/nginx/conf.d/
+  db:
+    image: mysql
+    container_name: streaming_db
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: streaming_backend
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devpass
+    ports:
+      - "3306:3306"
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
