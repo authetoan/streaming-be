@@ -48,6 +48,7 @@ final class Version20230704121501 extends AbstractMigration
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
+        $schema->dropTable(TableName::TABLE_OAUTH_CLIENTS);
         $schema->dropTable(TableName::TABLE_USER);
     }
 }

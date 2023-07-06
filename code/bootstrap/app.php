@@ -4,8 +4,15 @@ declare(strict_types = 1);
 
 use Slim\Factory\AppFactory;
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/../');
+if($_ENV['APP_ENV'] == 'testing') {
+    $dotenv = Dotenv\Dotenv::createMutable(__DIR__.'/../', '.env.testing');
+}
+else
+{
+    $dotenv = Dotenv\Dotenv::createMutable(__DIR__.'/../');
+}
 $dotenv->load();
+
 
 return static function (): \Slim\App {
 

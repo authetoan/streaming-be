@@ -6,6 +6,7 @@ namespace Travis\StreamingBackend\Domains\Entities\User;
 
 use DateTimeImmutable;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 use JsonSerializable;
@@ -35,6 +36,8 @@ class User implements UserEntityInterface, JsonSerializable
         $this->password = password_hash($password, null);
         $this->created_at = new DateTimeImmutable();
         $this->updated_at = new DateTimeImmutable();
+        $this->roles = new ArrayCollection();
+        $this->permissions = new ArrayCollection();
     }
 
     public function getId(): int

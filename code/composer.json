@@ -4,7 +4,9 @@
     "autoload": {
         "psr-4": {
             "Travis\\StreamingBackend\\": "app/",
-            "Database\\Migrations\\": "database/migrations/"
+            "Database\\Migrations\\": "database/migrations/",
+            "Test\\" : "tests/",
+            "Feature\\" : "features/"
         }
     },
     "authors": [
@@ -34,7 +36,9 @@
         "phpstan/phpstan": "^0.12.99",
         "squizlabs/php_codesniffer": "^3.7",
         "slevomat/coding-standard": "~8.0",
-        "vimeo/psalm": "^5.13"
+        "vimeo/psalm": "^5.13",
+        "mockery/mockery": "^1.6",
+        "behat/behat": "^3.13"
 
 
     },

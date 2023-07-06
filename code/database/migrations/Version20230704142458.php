@@ -67,5 +67,6 @@ final class Version20230704142458 extends AbstractMigration
         $schema->dropTable(TableName::TABLE_USER_HAS_PERMISSIONS);
         $schema->dropTable(TableName::TABLE_ROLE);
         $schema->dropTable(TableName::TABLE_PERMISSION);
+        $schema->dropTable(TableName::TABLE_CLIENT_HAS_PERMISSIONS);
     }
 }

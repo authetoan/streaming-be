@@ -1,6 +1,6 @@
 <?php
 
-$dotenv = Dotenv\Dotenv::createMutable(__DIR__.'/');
+$dotenv = Dotenv\Dotenv::createMutable(__DIR__.'/','.env.testing');
 $dotenv->load();
 
 return [
